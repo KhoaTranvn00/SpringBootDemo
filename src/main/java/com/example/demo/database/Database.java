@@ -1,6 +1,6 @@
 package com.example.demo.database;
 
-import com.example.demo.models.Product;
+import com.example.demo.entity.ProductEntity;
 import com.example.demo.repositories.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -13,8 +13,8 @@ public class Database {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
-                Product product1 = new Product("k");
-                Product product2 = new Product("n");
+                ProductEntity product1 = new ProductEntity("k");
+                ProductEntity product2 = new ProductEntity("n");
                 System.out.println("insert db " + productRepository.save(product1));
                 System.out.println("insert db " + productRepository.save(product2));
             }

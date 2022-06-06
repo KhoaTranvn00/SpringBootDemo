@@ -1,23 +1,27 @@
 package com.example.demo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.demo.entity.ProductEntity;
 
-@Entity
+import java.util.Optional;
+
 public class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
 
-    public Product() {
-    }
-
     public Product(String name) {
         this.name = name;
+    }
+
+    public Product(Optional<ProductEntity> entity) {
+        if(entity.isPresent()) {
+            this.id = entity.get().getId();
+            this.name = entity.get().getName();
+        }
+    }
+
+    public Product(ProductEntity entity) {
+        this.id = entity.getId();
+        this.name = entity.getName();
     }
 
     public Long getId() {
